@@ -398,8 +398,8 @@ func set_p2_cpu_type(cpu_type):
 func get_reset_pos():
 	return reset_pos
 
-func set_reset_pos(reset_pos):
-	self.reset_pos = reset_pos
+func set_reset_pos(new_reset_pos):
+	self.reset_pos = new_reset_pos
 
 func check_menu_input(player2_enabled):
 	if Input.is_action_just_pressed(global.INPUT_PLAYER1 + global.INPUT_ACTION_UP) or \
@@ -500,13 +500,13 @@ func _physics_process(delta):
 						player1.add_online_input(packet[1], copy_map, copy_frame, copy_delay, false)
 						player2.add_online_input(packet[1], copy_map, copy_frame, copy_delay, false)
 					global.P_TYPE.game_menu:
-						var player1 = (packet[1] == 1)
+						var isPlayer1 = (packet[1] == 1)
 						var info_text
-						if player1 and global.lobby_member_ids.size() > 0:
+						if isPlayer1 and global.lobby_member_ids.size() > 0:
 							info_text = Steam.getFriendPersonaName(global.lobby_member_ids[0]) + STR_INFO
 						elif player2 and global.lobby_member_ids.size() > 1:
 							info_text = Steam.getFriendPersonaName(global.lobby_member_ids[1]) + STR_INFO
-						if global.lobby_state == global.LOBBY_STATE.spectate and player1:
+						if global.lobby_state == global.LOBBY_STATE.spectate and isPlayer1:
 							option = packet[2]
 						else:
 							other_option = packet[2]
@@ -714,7 +714,7 @@ func _physics_process(delta):
 				if press_timer > 0:
 					press_timer -= 1
 					set_transition_in()
-					if press_timer < max_press_timer / 2 and transition_alpha < 1.5:
+					if press_timer < max_press_timer / 2.0 and transition_alpha < 1.5:
 						active_buttons.visible = false
 						move_lists.visible = false
 						menu_banner.deactivate()
@@ -775,7 +775,7 @@ func _physics_process(delta):
 				if press_timer > 0:
 					press_timer -= 1
 					set_transition_in()
-					if press_timer < max_press_timer / 2 and transition_alpha < 1.5:
+					if press_timer < max_press_timer / 2.0 and transition_alpha < 1.5:
 						if ((option != 1 and global.mode != global.MODE.training) or option > 2):
 							active_buttons.visible = false
 							move_lists.visible = false
