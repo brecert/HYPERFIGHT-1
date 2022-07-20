@@ -13,44 +13,6 @@
 [ext_resource path="res://scenes/ui/lobby/banner/chat.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/ui/menu/popup/yesno.tscn" type="PackedScene" id=12]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
@@ -142,7 +104,6 @@ __meta__ = {
 }
 
 [node name="labels" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 modulate = Color( 1, 1, 1, 0.501961 )
 
@@ -215,7 +176,6 @@ left_border = -221
 right_border = 151
 
 [node name="online_labels" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 
 [node name="label_name_player1" type="Label" parent="online_labels"]
@@ -223,18 +183,18 @@ margin_left = -120.0
 margin_top = 53.0
 margin_right = -34.0
 margin_bottom = 82.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 1, 0.25098, 0.25098, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = ExtResource( 6 )
 text = "[lobby owner]"
 
 [node name="label_name_player2" type="Label" parent="online_labels"]
 margin_top = 53.0
 margin_right = 120.0
 margin_bottom = 82.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0.25098, 0.25098, 1, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = ExtResource( 6 )
 text = "Invite P2!"
 align = 2
 
@@ -248,7 +208,6 @@ position = Vector2( -160, -64 )
 position = Vector2( -160, -48 )
 
 [node name="player_banners" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="lobby_player_banner_player1" parent="player_banners" instance=ExtResource( 10 )]
@@ -283,8 +242,8 @@ margin_left = -126.0
 margin_top = -76.0
 margin_right = 127.0
 margin_bottom = -62.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "lobby name"
 align = 2
 clip_text = true
@@ -305,9 +264,9 @@ margin_left = -126.0
 margin_top = 62.0
 margin_right = 109.0
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = ExtResource( 6 )
 text = "Waiting for spectators...15"
 clip_text = true
 
@@ -316,9 +275,9 @@ margin_left = -32.0
 margin_top = -63.0
 margin_right = -15.0
 margin_bottom = -50.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = ExtResource( 6 )
 text = "30"
 align = 1
 clip_text = true
@@ -328,9 +287,9 @@ margin_left = -32.0
 margin_top = -47.0
 margin_right = -15.0
 margin_bottom = -34.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = ExtResource( 6 )
 text = "30"
 align = 1
 clip_text = true
@@ -360,6 +319,7 @@ z_index = 4000
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "start"
 anims/start = SubResource( 5 )
+
 [connection signal="timeout" from="timeout_timer" to="." method="_on_timeout_timer_timeout"]
 [connection signal="timeout" from="player1_ready_timer" to="." method="_on_player1_ready_timer_timeout"]
 [connection signal="timeout" from="player2_ready_timer" to="." method="_on_player2_ready_timer_timeout"]

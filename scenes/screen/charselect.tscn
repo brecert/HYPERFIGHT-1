@@ -161,9 +161,9 @@ margin_left = -120.0
 margin_top = 53.0
 margin_right = -34.0
 margin_bottom = 82.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 1, 0.25098, 0.25098, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = ExtResource( 6 )
 text = "Player 1"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -173,9 +173,9 @@ __meta__ = {
 margin_top = 53.0
 margin_right = 120.0
 margin_bottom = 82.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0.25098, 0.25098, 1, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = ExtResource( 6 )
 text = "Player 2"
 align = 2
 
@@ -184,9 +184,9 @@ margin_left = -16.0
 margin_top = -64.0
 margin_right = 16.0
 margin_bottom = -48.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0.72549, 0.313726, 0.588235, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = ExtResource( 6 )
 text = "30"
 align = 1
 __meta__ = {
@@ -254,9 +254,9 @@ margin_left = 49.0
 margin_top = -17.0
 margin_right = 129.0
 margin_bottom = 12.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0.72549, 0.313726, 0.588235, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = ExtResource( 6 )
 text = "99:59"
 align = 1
 
@@ -264,13 +264,14 @@ align = 1
 margin_top = -10.0
 margin_right = 80.0
 margin_bottom = 19.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0.72549, 0.313726, 0.588235, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = ExtResource( 6 )
 text = "Record:"
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "start"
 anims/start = SubResource( 5 )
+
 [connection signal="timeout" from="online_timer" to="." method="_on_online_timer_timeout"]

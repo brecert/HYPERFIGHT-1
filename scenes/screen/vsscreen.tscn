@@ -113,9 +113,9 @@ margin_left = -50.0
 margin_top = -61.0
 margin_right = 50.0
 margin_bottom = -47.0
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.72549, 0.313726, 0.588235, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "STAGE 1"
 align = 1
 
@@ -124,9 +124,9 @@ margin_left = -123.0
 margin_top = -63.0
 margin_right = -1.0
 margin_bottom = -49.0
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "Player 1"
 
 [node name="label_player2_name" type="Label" parent="."]
@@ -134,8 +134,8 @@ margin_left = 1.71057
 margin_top = 49.6263
 margin_right = 123.711
 margin_bottom = 63.6263
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0.501961, 1, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "Player 2"
 align = 2
