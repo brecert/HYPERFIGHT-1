@@ -1025,6 +1025,18 @@ func _physics_process(delta):
 			paused_music = !global_audio.playing
 			global_audio.stop()
 
+func try_next_round():
+	win_player_num = -1
+	state = GAME_STATE.ready
+	win_timer = max_round_win_timer
+	if not (global.infinite_rounds or global.mode == global.MODE.training):
+		if player1.score >= win_score and player2.score >= win_score:
+			state = GAME_STATE.draw
+		elif player1.score >= win_score or player2.score >= win_score:
+			state = GAME_STATE.win
+		if state != GAME_STATE.ready:
+			win_timer = 90
+
 func win_timer_act():
 	match state:
 		GAME_STATE.ko:
@@ -1045,46 +1057,30 @@ func win_timer_act():
 				player1_scored = true
 				player2_scored = true
 				label_center.text = STR_DOUBLEKO
-			win_player_num = -1
-			state = GAME_STATE.ready
-			win_timer = max_round_win_timer
-			if not (global.infinite_rounds or global.mode == global.MODE.training):
-				if player1.score >= win_score and player2.score >= win_score:
-					state = GAME_STATE.draw
-				elif player1.score >= win_score or player2.score >= win_score:
-					state = GAME_STATE.win
-				if state != GAME_STATE.ready:
-					win_timer = 90
+			try_next_round()
 			play_audio(snd_ko)
 		GAME_STATE.super:
 			label_center.visible = true
 			if win_player_num == 1:
-				player1.win_score()
+				player1.inc_score()
+				player1.inc_score()
 				player2.update_score()
 				player1_scored = true
 				label_center.text = STR_SUPERKO
 			elif win_player_num == 2:
-				player2.win_score()
+				player2.inc_score()
+				player2.inc_score()
 				player1.update_score()
 				player2_scored = true
 				label_center.text = STR_SUPERKO
 			else:
+				# this intentionally does not match inc_score cause it'd be funny.
 				player1.win_score()
 				player2.win_score()
 				player1_scored = true
 				player2_scored = true
 				label_center.text = STR_DOUBLESUPERKO
-			win_player_num = -1
-			win_timer = max_round_win_timer
-			if (global.infinite_rounds or global.mode == global.MODE.training):
-				state = GAME_STATE.ready
-			else:
-				if player1.score >= win_score and player2.score >= win_score:
-					state = GAME_STATE.draw
-				else:
-					state = GAME_STATE.win
-				if state != GAME_STATE.ready:
-					win_timer = 90
+			try_next_round()
 			play_audio(snd_superko)
 		GAME_STATE.win:
 			state = GAME_STATE.premenu
