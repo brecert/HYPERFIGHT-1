@@ -151,7 +151,7 @@ var infinite_rounds = false
 var auto_rematch = false
 var print_round_end_frame = false
 var print_texts = false
-var steam_enabled = true
+var steam_enabled = false
 var html5_ver = false
 var custom_palettes_enabled = false
 
@@ -189,6 +189,9 @@ var host_max_page = 4
 var input_delay = 0
 var prev_input_delay = 0
 var stage_select = STAGE_SELECT.random
+
+# todo: remove max_score as a global and make it per-game
+var win_score = 6
 
 var menu_init = false
 var menu_option = 1

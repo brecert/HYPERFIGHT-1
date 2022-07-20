@@ -589,44 +589,33 @@ func check_dead():
 		no_act_frames += 1
 
 func inc_score():
-	if score <= 5:
-		score = score_balls.inc_score()
+	score = score_balls.inc_score()
 
 func win_score():
-	if score <= 5:
-		score = score_balls.win_score()
+	score = score_balls.win_score()
 
 func dec_score():
-	if score <= 5:
-		score -= 1
-		if score < 0:
-			score = 0
-		score_balls.use_ball()
+	score -= 1
+	score_balls.use_ball()
 
 func update_score():
-	if score <= 5:
-		score_balls.remove_temps()
-		score = score_balls.score
+	score_balls.remove_temps()
+	score = score_balls.score
 
 func set_score(new_score):
 	score = new_score
 	score_balls.set_score(new_score)
 
 func inc_temp_score_back():
-	if score <= 5:
-		var orig_temp = score_balls.temp_score
-		inc_score()
-		while score_balls.temp_score > orig_temp + 1:
-			score_balls.use_ball()
-		score = score_balls.temp_score
+	inc_score()
+	score_balls.use_ball()
+	score_balls.use_ball()
+	score = score_balls.temp_score
 
 func inc_temp_score():
-	if score <= 5:
-		var orig_temp = score_balls.temp_score
-		inc_score()
-		while score_balls.temp_score > orig_temp:
-			score_balls.use_ball()
-		score = score_balls.temp_score
+	inc_score()
+	score_balls.use_ball()
+	score = score_balls.temp_score
 
 func get_red_score():
 	return score_balls.score

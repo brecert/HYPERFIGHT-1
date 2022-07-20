@@ -120,6 +120,8 @@ var show_hitboxes = false
 var reset_pos = global.RESET_POS.middle
 var active_buttons
 
+var win_score = global.win_score
+
 onready var label_player1 = get_node("GUILayer/label_player1")
 onready var label_player1_wins = get_node("GUILayer/label_player1/label_wins")
 onready var meter_player1_scythe = get_node("GUILayer/label_player1/meter_scythe")
@@ -1047,9 +1049,9 @@ func win_timer_act():
 			state = GAME_STATE.ready
 			win_timer = max_round_win_timer
 			if not (global.infinite_rounds or global.mode == global.MODE.training):
-				if player1.score >= 5 and player2.score >= 5:
+				if player1.score >= win_score and player2.score >= win_score:
 					state = GAME_STATE.draw
-				elif player1.score >= 5 or player2.score >= 5:
+				elif player1.score >= win_score or player2.score >= win_score:
 					state = GAME_STATE.win
 				if state != GAME_STATE.ready:
 					win_timer = 90
@@ -1077,7 +1079,7 @@ func win_timer_act():
 			if (global.infinite_rounds or global.mode == global.MODE.training):
 				state = GAME_STATE.ready
 			else:
-				if player1.score >= 5 and player2.score >= 5:
+				if player1.score >= win_score and player2.score >= win_score:
 					state = GAME_STATE.draw
 				else:
 					state = GAME_STATE.win
@@ -1088,7 +1090,7 @@ func win_timer_act():
 			state = GAME_STATE.premenu
 			game_over = true
 			win_timer = 120
-			if player1.score >= 5:
+			if player1.score >= win_score:
 				label_center.text = STR_PLAYER1WIN
 				player1.win()
 				if not player2_scored:
@@ -1141,7 +1143,7 @@ func win_timer_act():
 			label_center.visible = false
 			win_timer = -1
 			if global.mode == global.MODE.arcade:
-				if player1.score >= 5 and player2.score < 5:
+				if player1.score >= win_score and player2.score < win_score:
 					state = GAME_STATE.next_stage
 				elif global.arcade_continues > 0:
 					state = GAME_STATE._continue
@@ -1154,8 +1156,8 @@ func win_timer_act():
 				option = 1
 				menu_banner.activate()
 			elif global.mode == global.MODE.online_lobby:
-				if (global.lobby_state == global.LOBBY_STATE.player1 and player1.score >= 5 and player2.score < 5) or \
-				   (global.lobby_state == global.LOBBY_STATE.player2 and player2.score >= 5 and player1.score < 5):
+				if (global.lobby_state == global.LOBBY_STATE.player1 and player1.score >= win_score and player2.score < win_score) or \
+				   (global.lobby_state == global.LOBBY_STATE.player2 and player2.score >= win_score and player1.score < win_score):
 					var wins = global.get_lobby_member_data(global.steam_id, global.MEMBER_LOBBY_WINS)
 					global.set_lobby_member_data(global.MEMBER_LOBBY_WINS, str(int(wins) + 1))
 				if global.lobby_state != global.LOBBY_STATE.spectate:
